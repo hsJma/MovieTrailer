@@ -61,6 +61,8 @@ main_page_head = '''
         .navbar-inverse{
             background-image: linear-gradient(to bottom, #000 0%, #4573b7 100%);
         }
+
+        // dots navigation
         .banner{
             position: relative; overflow: auto;
         }
@@ -71,7 +73,6 @@ main_page_head = '''
             display: inline-block;
             float: left;
         }
-
         .dots {
           position: absolute;
           left: 0;
@@ -79,7 +80,6 @@ main_page_head = '''
           bottom: 0px;
           text-align: left;
         }
-
         .dots li {
           display: inline-block;
           width: 10px;
@@ -94,12 +94,13 @@ main_page_head = '''
           -moz-transition: background .5s, opacity .5s;
           transition: background .5s, opacity .5s;
         }
-
         .dots li.active {
           background: #4573b7;
           opacity: 1;
         }
+
     </style>
+
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
         $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
@@ -118,6 +119,7 @@ main_page_head = '''
               'frameborder': 0
             }));
         });
+        // Unslider effect parameter
         $(function() {
           $('.banner').unslider({
             speed: 1000,
@@ -127,7 +129,6 @@ main_page_head = '''
             fluid: true
             });
         });
-        // Animate in the movies when the page loads
 
     </script>
 </head>
@@ -173,12 +174,6 @@ main_page_content = '''
 '''
 
 # A single movie entry html template
-movie_tile_content = '''
-<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-    <img src="{poster_image_url}" width="220" height="342">
-    <h2>{movie_title}</h2>
-</div>
-'''
 
 movie_tile_content_slide = '''
 <li class='movie-tile text-center' data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">

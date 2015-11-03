@@ -25,6 +25,6 @@ fight_club = media.Movie('Fight Club',
 	                     'https://www.youtube.com/watch?v=SUXWAEX2jlg',
 	                     8.9)
 
-#mr_nobody.show_trailer()
+
 movies = [mr_nobody, lego_movie, notting_hill, fight_club]
 fresh_tomatoes.open_movies_page(movies)
