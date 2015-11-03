@@ -14,6 +14,7 @@ main_page_head = '''
     <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="http://unslider.com/unslider.min.js"></script>
     <style type="text/css" media="screen">
         body {
             padding-top: 80px;
@@ -55,7 +56,48 @@ main_page_head = '''
             background-color: white;
         }
         *{
-        font-family: 'Abel', sans-serif;
+            font-family: 'Abel', sans-serif;
+        }
+        .navbar-inverse{
+            background-image: linear-gradient(to bottom, #000 0%, #4573b7 100%);
+        }
+        .banner{
+            position: relative; overflow: auto;
+        }
+        .banner li {
+            list-style: none;
+        }
+        .banner ul li {
+            display: inline-block;
+            float: left;
+        }
+
+        .dots {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0px;
+          text-align: left;
+        }
+
+        .dots li {
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          margin: 0 4px;
+          text-indent: -999em;
+          border: 2px solid #4573b7;
+          border-radius: 6px;
+          cursor: pointer;
+          opacity: .4;
+          -webkit-transition: background .5s, opacity .5s;
+          -moz-transition: background .5s, opacity .5s;
+          transition: background .5s, opacity .5s;
+        }
+
+        .dots li.active {
+          background: #4573b7;
+          opacity: 1;
         }
     </style>
     <script type="text/javascript" charset="utf-8">
@@ -76,12 +118,17 @@ main_page_head = '''
               'frameborder': 0
             }));
         });
-        // Animate in the movies when the page loads
-        $(document).ready(function () {
-          $('.movie-tile').hide().first().show("fast", function showNext() {
-            $(this).next("div").show("fast", showNext);
-          });
+        $(function() {
+          $('.banner').unslider({
+            speed: 1000,
+            delay: 5000,
+            keys: true,
+            dots: true,
+            fluid: true
+            });
         });
+        // Animate in the movies when the page loads
+
     </script>
 </head>
 '''
@@ -115,7 +162,11 @@ main_page_content = '''
       </div>
     </div>
     <div class="container">
-      {movie_tiles}
+      <div class='banner'>
+        <ul>
+          {movie_tiles}
+        </ul>
+      </div>
     </div>
   </body>
 </html>
@@ -129,6 +180,13 @@ movie_tile_content = '''
 </div>
 '''
 
+movie_tile_content_slide = '''
+<li class='movie-tile text-center' data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
+    <img src="{poster_image_url}" width="220" height="342">
+    <h2>{movie_title}</h2>
+</li>
+'''
+
 def create_movie_tiles_content(movies):
     # The HTML content for this section of the page
     content = ''
@@ -139,7 +197,7 @@ def create_movie_tiles_content(movies):
         trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
 
         # Append the tile for the movie with its content filled in
-        content += movie_tile_content.format(
+        content += movie_tile_content_slide.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id
