@@ -56,6 +56,8 @@
         .navbar-inverse{
             background-image: linear-gradient(to bottom, #000 0%, #4573b7 100%);
         }
+
+        // dots navigation
         .banner{
             position: relative; overflow: auto;
         }
@@ -66,7 +68,6 @@
             display: inline-block;
             float: left;
         }
-
         .dots {
           position: absolute;
           left: 0;
@@ -74,7 +75,6 @@
           bottom: 0px;
           text-align: left;
         }
-
         .dots li {
           display: inline-block;
           width: 10px;
@@ -89,12 +89,13 @@
           -moz-transition: background .5s, opacity .5s;
           transition: background .5s, opacity .5s;
         }
-
         .dots li.active {
           background: #4573b7;
           opacity: 1;
         }
+
     </style>
+
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
         $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
@@ -113,6 +114,7 @@
               'frameborder': 0
             }));
         });
+        // Unslider effect parameter
         $(function() {
           $('.banner').unslider({
             speed: 1000,
@@ -122,7 +124,6 @@
             fluid: true
             });
         });
-        // Animate in the movies when the page loads
 
     </script>
 </head>

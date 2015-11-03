@@ -1,5 +1,6 @@
 import webbrowser
 
+
 class Movie():
 	""" Base class to store movie information. 
 
@@ -10,7 +11,8 @@ class Movie():
 		trailer_youtube_url: A string
 		imdb_rating: A float rating from 1.0 to 10.0
 	"""
-	def __init__(self, movie_title, movie_storyline, poster_image, trailer_youtube, imdb_score):
+	def __init__(self, movie_title, movie_storyline, poster_image, 
+		         trailer_youtube, imdb_score):
 		self.title = movie_title
 		self.storyline = movie_storyline
 		self.poster_image_url = poster_image
